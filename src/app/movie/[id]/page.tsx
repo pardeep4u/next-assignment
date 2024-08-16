@@ -30,9 +30,7 @@ export default async function Home({ params }: { params: { id: string } }) {
     const queryString = movieData.data.genre
       .map((param: string) => `genre=${encodeURIComponent(param)}`)
       .join("&");
-    const res = await fetch(
-      `http://localhost:3000/api/get-data?${queryString}`
-    );
+    const res = await fetch(`${currentUrl}/api/get-data?${queryString}`);
     if (!res.ok) {
       throw new Error("Network res was not okay");
     }
