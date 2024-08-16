@@ -29,7 +29,7 @@ export default function MyModal({
   async function onChange(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setItem(e.target.value);
-    const response = await fetch("http://localhost:3000/api/search-movie", {
+    const response = await fetch("/api/search-movie", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
