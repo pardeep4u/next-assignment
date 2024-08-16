@@ -1,13 +1,21 @@
 import MovieDetails from "@/components/MovieDetails";
+import { headers } from "next/headers";
+import { NextRequest } from "next/server";
+
 export default async function Home({ params }: { params: { id: string } }) {
+  const headersList = headers();
+  const host = headersList.get("host");
+  const protocol = headersList.get("x-forwarded-proto") || "http";
+  const currentUrl = `${protocol}://${host}${
+    headersList.get("x-url-path") || ""
+  }`;
+
   let response;
   let movieData;
   let genMovies;
 
-  console.log(process.env.NEXT_AUTH_URL);
-
   try {
-    response = await fetch(`http://localhost:3000/api/get-by-id`, {
+    response = await fetch(`${currentUrl}/api/get-by-id`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
