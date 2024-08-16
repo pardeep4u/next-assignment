@@ -7,9 +7,10 @@
        Search [*]
        Genre - dropDown [*]
        Loader - dropDown [*]
-       footer - []
+       footer - [*]
 
-
-    2) Pagination - Inifinte scrolling
     3) Show more options in single movie page [*]
-    4) Responsive
+    4) Responsive & TypeScript [*]
+
+    send Skip
+    take always 8

@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
 import prisma from "../../../../prisma/client";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const query = req.nextUrl.searchParams.getAll("genre");
-
+  const body = await req.json();
   let movies;
   let gen;
 
@@ -14,9 +14,11 @@ export async function GET(req: NextRequest) {
           hasSome: query,
         },
       },
+      take: 8,
+      skip: body.skip,
     });
   } else {
-    movies = await prisma.movie.findMany();
+    movies = await prisma.movie.findMany({ take: 8, skip: body.skip });
   }
   const genData = await prisma.movie.findMany();
 

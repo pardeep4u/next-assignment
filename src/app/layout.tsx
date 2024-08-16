@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -15,18 +15,18 @@ datasource db {
 
 model Movie {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  topId        String?
+  topId        String
   rank         Int
   title        String
   description  String
-  image        String?
-  bigImage     String?
+  image        String
+  bigImage     String
   genre        String[] @default([]) // Array of strings for genres
-  thumbnail    String?
-  rating       String?
+  thumbnail    String
+  rating       String
   year         Int?
-  imdbid       String?
-  imdbLink     String?
+  imdbid       String
+  imdbLink     String
 }
 
 

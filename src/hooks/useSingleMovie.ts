@@ -21,6 +21,7 @@ function useSingleMovie() {
         toast.error("Something went wrong");
       }
     } catch (error) {
+      console.error(`Failed to delete`);
       console.error(`Error deleting movie: ${error}`);
     } finally {
       setIsDeleting(false);

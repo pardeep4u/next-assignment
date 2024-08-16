@@ -1,13 +1,16 @@
-"use client";
 /* eslint-disable @next/next/no-img-element */
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Movie } from "@prisma/client";
 
-const MovieCard = ({ movie }: { movie: any }) => {
+const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
-    <Link href={"/movie/" + movie.imdbid}>
+    <Link
+      href={"/movie/" + movie.imdbid}
+      className="max-sm:flex items-center justify-center"
+    >
       <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white hover:cursor-pointer hover:-translate-y-1 transition-all">
         <img className="w-full" src={movie.image} alt={movie.title} />
         <div className="px-6 py-4">

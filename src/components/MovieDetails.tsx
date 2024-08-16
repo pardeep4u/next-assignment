@@ -1,11 +1,16 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
 
-import useSingleMovie from "@/hooks/useSingleMovie";
 import MoreMovies from "./MoreMovies";
+import { Movie } from "@prisma/client";
+import DeleteButton from "./DeleteButton";
 
-const MovieDetails = ({ movie, genMovies }: { movie: any; genMovies: any }) => {
-  const { handleDelete, isDeleting } = useSingleMovie();
-
+const MovieDetails = ({
+  movie,
+  genMovies,
+}: {
+  movie: Movie;
+  genMovies: { data: Movie[] };
+}) => {
   return (
     <div>
       <div className="mx-auto bg-gray-800 text-white rounded-lg shadow-lg p-6 my-8">
@@ -24,7 +29,7 @@ const MovieDetails = ({ movie, genMovies }: { movie: any; genMovies: any }) => {
                 Rating: {movie.rating}
               </span>
             </div>
-            <div className="flex items-center w-full justify-between absolute bottom-0">
+            <div className="flex items-center w-full justify-between md:absolute bottom-0">
               <div className="flex flex-wrap">
                 {movie.genre.map((genre: any, index: any) => (
                   <span
@@ -44,19 +49,7 @@ const MovieDetails = ({ movie, genMovies }: { movie: any; genMovies: any }) => {
                 >
                   View on IMDb
                 </a>
-                <button
-                  onClick={() => {
-                    handleDelete(movie.id);
-                  }}
-                  disabled={isDeleting}
-                  className={`ml-4 px-3 py-1 rounded text-white ${
-                    isDeleting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-red-500 hover:bg-red-600"
-                  }`}
-                >
-                  {isDeleting ? "Deleting..." : "Delete"}
-                </button>
+                <DeleteButton movie={movie} />
               </div>
             </div>
           </div>
